@@ -24,9 +24,9 @@ const int Temp_sensor = A7;
 
 // used for password
 int i = 0;
-
 char initial_password[] = "1234";
 
+// KeyPad
 char keys[ROW_NUM][COLUMN_NUM] = {
   {'1','2','3'},
   {'4','5','6'},
@@ -39,6 +39,7 @@ byte pin_column[COLUMN_NUM] = {18, 19, 20}; //connect to the column pinouts of t
 
 Keypad keypad = Keypad( makeKeymap(keys), pin_rows, pin_column, ROW_NUM, COLUMN_NUM );
 
+// LCD 
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
@@ -80,7 +81,7 @@ void checkPassword()
       digitalWrite (LED_green, LOW);
       digitalWrite (LED_red, LOW);
     }
-    if(key == 35)
+    if(key == 35) //#
     {
       i = 0;
       digitalWrite (LED_green, LOW);
@@ -155,7 +156,7 @@ void FlameSensor()
 
 void PIRSensor()
 {
-   int pir_input = digitalRead(PIR);
+  int pir_input = digitalRead(PIR);
   if(pir_input ==  HIGH)
   {
     digitalWrite (Lamb, HIGH);
